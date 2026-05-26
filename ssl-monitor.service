@@ -1,0 +1,15 @@
+[Unit]
+Description=SSL Certificate Monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/ssl-monitor
+ExecStart=/usr/bin/python3 /opt/ssl-monitor/ssl_monitor.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
